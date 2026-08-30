@@ -3,14 +3,22 @@ import fighter from '../../assets/images/hero-fighter.png';
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[560px] flex-col overflow-hidden bg-dark-bg sm:min-h-[680px] md:min-h-[880px]">
-      <div className="pointer-events-none absolute left-1/2 top-[6%] h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,#2b2b30_0%,transparent_70%)] md:h-[820px] md:w-[820px]" />
+    <section className="relative flex min-h-[620px] flex-col overflow-hidden bg-dark-bg sm:min-h-[760px] md:min-h-[880px]">
+      <div className="pointer-events-none absolute left-1/2 top-[4%] h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,#26262b_0%,transparent_70%)] md:h-[780px] md:w-[780px]" />
 
       <img
         src={fighter}
         alt="Франсимара Бодао Барросо"
-        className="pointer-events-none absolute bottom-0 left-1/2 h-[78%] max-w-none -translate-x-1/2 object-contain object-bottom grayscale md:h-[92%]"
+        style={{
+          WebkitMaskImage:
+            'radial-gradient(ellipse 68% 80% at 50% 45%, #000 40%, transparent 82%)',
+          maskImage:
+            'radial-gradient(ellipse 68% 80% at 50% 45%, #000 40%, transparent 82%)',
+        }}
+        className="pointer-events-none absolute bottom-0 left-1/2 h-[80%] max-w-none -translate-x-1/2 object-contain object-bottom md:h-[96%]"
       />
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-dark-bg to-transparent" />
 
       <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 py-10 md:px-8 md:py-12">
         <p className="max-w-[320px] text-base font-bold leading-tight text-white md:text-xl">
