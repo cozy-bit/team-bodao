@@ -1,47 +1,58 @@
 import Button from '../ui/Button';
 import fighter from '../../assets/images/hero-fighter.png';
 
+const MASK =
+  'radial-gradient(ellipse 62% 78% at 50% 44%, #000 32%, transparent 78%)';
+
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[620px] flex-col overflow-hidden bg-dark-bg sm:min-h-[760px] md:min-h-[880px]">
-      <div className="pointer-events-none absolute left-1/2 top-[4%] h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,#26262b_0%,transparent_70%)] md:h-[780px] md:w-[780px]" />
+    <section className="relative overflow-hidden bg-dark-bg">
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[380px] w-[380px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,#26262b_0%,transparent_70%)] md:top-[4%] md:h-[780px] md:w-[780px]" />
 
       <img
         src={fighter}
-        alt="Франсимара Бодао Барросо"
-        style={{
-          WebkitMaskImage:
-            'radial-gradient(ellipse 68% 80% at 50% 45%, #000 40%, transparent 82%)',
-          maskImage:
-            'radial-gradient(ellipse 68% 80% at 50% 45%, #000 40%, transparent 82%)',
-        }}
-        className="pointer-events-none absolute bottom-0 left-1/2 h-[80%] max-w-none -translate-x-1/2 object-contain object-bottom md:h-[96%]"
+        alt=""
+        aria-hidden="true"
+        style={{ WebkitMaskImage: MASK, maskImage: MASK }}
+        className="pointer-events-none absolute bottom-0 left-1/2 hidden h-[96%] max-w-none -translate-x-1/2 object-contain object-bottom md:block"
       />
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-dark-bg to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-1/3 bg-gradient-to-t from-dark-bg to-transparent md:block" />
 
-      <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 py-10 md:px-8 md:py-12">
-        <p className="max-w-[320px] text-base font-bold leading-tight text-white md:text-xl">
+      <div className="relative mx-auto flex w-full max-w-[1240px] flex-col px-5 py-10 md:min-h-[860px] md:px-10 md:py-14 lg:px-14">
+        <p className="max-w-[300px] text-base font-bold leading-tight text-white md:text-xl">
           Bodao team команда профессионального бойца ММА из Бразилии
         </p>
 
-        <div className="my-auto flex flex-col gap-1 py-10 md:flex-row md:items-center md:justify-between md:gap-6">
-          <span className="text-[clamp(2.25rem,5.6vw,5rem)] font-extrabold uppercase leading-none tracking-tight text-white">
+        <div className="mt-8 flex flex-col gap-1 md:my-auto md:flex-row md:items-center md:justify-between md:gap-6">
+          <span className="text-[clamp(2.5rem,11vw,3.75rem)] font-extrabold uppercase leading-none tracking-tight text-white md:text-[clamp(3rem,5.4vw,5rem)]">
             Франсимара
           </span>
-          <span className="text-[clamp(2.25rem,5.6vw,5rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white md:text-right">
+          <span className="text-[clamp(2.5rem,11vw,3.75rem)] font-extrabold uppercase leading-[0.95] tracking-tight text-white md:text-right md:text-[clamp(3rem,5.4vw,5rem)]">
             Бодао <br className="hidden md:block" />
             Барросо
           </span>
         </div>
 
-        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+        <img
+          src={fighter}
+          alt="Франсимара Бодао Барросо"
+          style={{ WebkitMaskImage: MASK, maskImage: MASK }}
+          className="mx-auto mt-4 w-[72%] max-w-[300px] md:hidden"
+        />
+
+        <div className="mt-8 flex flex-col items-start gap-6 md:mt-0 md:flex-row md:items-end md:justify-between">
           <p className="max-w-md text-sm leading-relaxed text-white md:text-[15px]">
             У Бодао более 50 проф поединков за плечами, он проводил бои в лучших
             лигах ММА мира, 5 лет в UFC и 3 года в PFL. И теперь он открыл свои
             клубы в России что бы поделиться с вами своим опытом.
           </p>
-          <Button className="rounded-full md:mb-1">ЗАПИСАТЬСЯ</Button>
+          <Button
+            fullWidth
+            className="rounded-full sm:max-w-[300px] md:mb-1"
+          >
+            ЗАПИСАТЬСЯ
+          </Button>
         </div>
       </div>
     </section>
