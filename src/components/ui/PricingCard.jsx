@@ -1,4 +1,5 @@
-import { MoveRight } from 'lucide-react';
+import Button from './Button';
+import { useModal } from '../../context/ModalContext';
 
 export default function PricingCard({
   title,
@@ -9,6 +10,16 @@ export default function PricingCard({
   buttonText = 'ЗАПИСАТЬСЯ',
   onSelect,
 }) {
+  const { openModal } = useModal();
+
+  const handleSelect = () => {
+    if (onSelect) {
+      onSelect();
+    } else {
+      openModal({ plan: title, price });
+    }
+  };
+
   return (
     <div className="bg-[#18181A] rounded-2xl p-6 sm:p-7 md:p-8 flex flex-col justify-between border border-white/5 transition-all duration-300 hover:border-white/10 hover:shadow-2xl hover:shadow-black/50">
       <div>
@@ -32,8 +43,8 @@ export default function PricingCard({
 
       {/* Bottom Section */}
       <div>
-        {/* Prices */}
-        <div className="flex items-baseline justify-between mb-5">
+        {/* Prices side-by-side as in mockups */}
+        <div className="flex items-baseline gap-3.5 mb-5">
           <span className="text-white text-2xl sm:text-[28px] font-bold tracking-tight">
             {price}
           </span>
@@ -44,15 +55,14 @@ export default function PricingCard({
           )}
         </div>
 
-        {/* Action Button */}
-        <button
-          type="button"
-          onClick={onSelect}
-          className="w-full bg-[#F4B24B] hover:bg-[#e2a23e] active:scale-[0.98] text-white font-semibold text-xs sm:text-sm py-3.5 px-6 rounded-full flex items-center justify-center gap-2.5 transition-all duration-200 cursor-pointer uppercase tracking-wider shadow-lg shadow-[#F4B24B]/10"
+        {/* Action Button using UI Button */}
+        <Button
+          fullWidth
+          onClick={handleSelect}
+          className="w-full max-w-full"
         >
-          <MoveRight className="w-5 h-5 stroke-[2.2]" />
-          <span>{buttonText}</span>
-        </button>
+          {buttonText}
+        </Button>
       </div>
     </div>
   );

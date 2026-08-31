@@ -1,20 +1,25 @@
 import Button from '../ui/Button';
 import fighter from '../../assets/images/hero-fighter.png';
+import { useModal } from '../../context/ModalContext';
 
 const MASK =
   'radial-gradient(ellipse 62% 78% at 50% 44%, #000 32%, transparent 78%)';
 
 export default function Hero() {
+  const { openModal } = useModal();
+
   return (
     <section className="relative overflow-hidden bg-dark-bg">
+      {/* Background Radial Glow */}
       <div className="pointer-events-none absolute left-1/2 top-0 h-[380px] w-[380px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,#26262b_0%,transparent_70%)] md:top-[4%] md:h-[780px] md:w-[780px]" />
 
+      {/* Desktop Fighter Photo (Visually Centered) */}
       <img
         src={fighter}
-        alt=""
+        alt="Франсимара Бодао Барросо"
         aria-hidden="true"
         style={{ WebkitMaskImage: MASK, maskImage: MASK }}
-        className="pointer-events-none absolute bottom-0 left-1/2 hidden h-[96%] max-w-none -translate-x-1/2 object-contain object-bottom md:block"
+        className="pointer-events-none absolute bottom-0 left-[51.5%] hidden h-[96%] max-w-none -translate-x-1/2 object-contain object-bottom md:block"
       />
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-1/3 bg-gradient-to-t from-dark-bg to-transparent md:block" />
@@ -34,11 +39,12 @@ export default function Hero() {
           </span>
         </div>
 
+        {/* Mobile Fighter Photo */}
         <img
           src={fighter}
           alt="Франсимара Бодао Барросо"
           style={{ WebkitMaskImage: MASK, maskImage: MASK }}
-          className="mx-auto mt-4 w-[72%] max-w-[300px] md:hidden"
+          className="mx-auto mt-4 w-[72%] max-w-[300px] translate-x-2 md:hidden"
         />
 
         <div className="mt-8 flex flex-col items-start gap-6 md:mt-0 md:flex-row md:items-end md:justify-between">
@@ -48,8 +54,9 @@ export default function Hero() {
             клубы в России что бы поделиться с вами своим опытом.
           </p>
           <Button
+            onClick={() => openModal()}
             fullWidth
-            className="rounded-full sm:max-w-[300px] md:mb-1"
+            className="sm:max-w-[300px] md:mb-1"
           >
             ЗАПИСАТЬСЯ
           </Button>
